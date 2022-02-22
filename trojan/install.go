@@ -134,7 +134,8 @@ func InstallTls() {
 			}
 			util.ExecCommand(fmt.Sprintf("bash /root/.acme.sh/acme.sh --server %s --register-account -m %s", server, email))
 		}
-		issueCommand := fmt.Sprintf("bash /root/.acme.sh/acme.sh --issue -d %s --debug --standalone --keylength ec-256 --force --server %s", domain, server)
+		#issueCommand := fmt.Sprintf("bash /root/.acme.sh/acme.sh --issue -d %s --debug --standalone --keylength ec-256 --force --server %s", domain, server)
+		issueCommand := fmt.Sprintf("bash /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt %s --debug --standalone --keylength ec-256 --force --server %s", domain, server)
 		if server == "buypass" {
 			issueCommand = issueCommand + " --days 170"
 		}
